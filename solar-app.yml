@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: solar-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/anthony-delarosa-org/argo-cd-app-demo-2.git
+    targetRevision: HEAD
+    path: ./
+    directory:
+      recurse: true
+   
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: beta
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true  
+    automated:
+      prune: true
+      selfHeal: true
