@@ -10,8 +10,8 @@ spec:
   source:
     path: ''
     repoURL: 'https://prometheus-community.github.io/helm-charts'
-    targetRevision: 55.4.0
-    chart: kube-prometheus-stack
+    targetRevision: 25.4.0
+    chart: prometheus
   sources: []
   project: default
   syncPolicy:
